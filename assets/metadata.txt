@@ -1,0 +1,4 @@
+Input Shape: [ 1 40]
+Input Type: <class 'numpy.float32'>
+Output Shape: [1 2]
+Output Type: <class 'numpy.float32'>
