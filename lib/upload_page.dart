@@ -1,5 +1,6 @@
 import 'package:circular_seek_bar/circular_seek_bar.dart';
 import 'package:depp_reco/main.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -7,10 +8,14 @@ import 'package:flutter/widgets.dart';
 
 
 
+// ignore: must_be_immutable
 class AudioUploadScreen extends StatefulWidget {
-   AudioUploadScreen({super.key,required this.gender});
+   AudioUploadScreen({super.key,required this.gender, required this.outPut, required this.prediction});
 
-  String gender;
+  final String gender;
+
+ final String  outPut;
+  final String prediction;
 
   @override
   State<AudioUploadScreen> createState() => _AudioUploadScreenState();
@@ -71,10 +76,10 @@ class _AudioUploadScreenState extends State<AudioUploadScreen> {
                     builder: (_, double value, __) => Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text('${value.round()}',
+                            Text('${value.round()}%',
                                 style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.w700)),
-                            Text('progress',
-                                style: TextStyle(color: Colors.white)),
+                            Text(widget.prediction,
+                                style: TextStyle(color: Colors.white,fontSize: 20)),
                           ],
                         )),
               ),
@@ -83,17 +88,34 @@ class _AudioUploadScreenState extends State<AudioUploadScreen> {
             Expanded(child: Column(
               children: [
 
-                Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(15)
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: ListTile(
+                      leading: Icon(Icons.person,color: Colors.white,size: 50,),
+                      title: Text(widget.gender,style: TextStyle(color: Colors.white),),
+                    ),
                   ),
-                  child: ListTile(
-                    leading: Icon(Icons.person,color: Colors.white,size: 50,),
-                    title: Text(widget.gender,style: TextStyle(color: Colors.white),),
+                ),
+                SizedBox(height: 10,),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: ListTile(
+                      leading: Icon(Icons.message,color: Colors.white,size: 50,),
+                      title: Text(widget.outPut,style: TextStyle(color: Colors.white),),
+                    ),
                   ),
-                )
+                ),
+                SizedBox(height: 10,)
               ],
             ))
 

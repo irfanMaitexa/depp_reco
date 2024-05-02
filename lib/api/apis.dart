@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
@@ -11,10 +12,10 @@ class ApiServices {
     }
   }
 
-  Future<void> sendAudioFile(String filePath) async {
+  Future<Map<String,dynamic>> sendAudioFile(String filePath) async {
     try {
       print('api call');
-      Uri apiUrl = Uri.parse('https://17ad-117-196-59-167.ngrok-free.app/predict'); // Replace with your actual API endpoint
+      Uri apiUrl = Uri.parse('https://3662-117-201-196-79.ngrok-free.app/predict'); // Replace with your actual API endpoint
       var request = http.MultipartRequest('POST', apiUrl);
 
       // Attach the audio file to the request
@@ -22,22 +23,28 @@ class ApiServices {
 
       var response = await request.send();
 
-      print('ggggggggggggggggggggggggggggggggggg');
+      
 
 
 
       print(response.statusCode);
 
       if (response.statusCode == 200) {
-        print('Audio file successfully uploaded!');
-        // Handle the API response as needed
+
+        final responseData = await response.stream.bytesToString();
+      final parsedData = json.decode(responseData);
+
+
+      return parsedData;
+
+       
       } else {
-        print('Failed to upload audio file. Status code: ${response.statusCode}');
-        // Handle the error
+
+        throw 'Somthing went wrong';
+        
       }
     } catch (e) {
-      print('Error uploading audio file: $e');
-      // Handle the error
+      rethrow;
     }
   }
 }

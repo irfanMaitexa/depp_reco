@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:depp_reco/api/apis.dart';
+import 'package:depp_reco/main.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -70,6 +71,12 @@ class _MyHomePageState extends State<MyHomePage>
     );
   }
 
+
+   Map<String,dynamic> ? data;
+
+
+
+
   void _checkAndRequestPermission() async {
     PermissionStatus status = await Permission.storage.status;
 
@@ -123,7 +130,10 @@ class _MyHomePageState extends State<MyHomePage>
     try {
 
       startRecording();
-      await _apiServices.sendAudioFile(selectedFilePath!);
+      data = await _apiServices.sendAudioFile(selectedFilePath!);
+
+     print("dddddddddddddddddddddddddddddd");
+      print(data);
 
       
 
@@ -212,7 +222,21 @@ class _MyHomePageState extends State<MyHomePage>
                             backgroundColor: Colors.blue,
                             fixedSize: const Size.fromHeight(50)),
                         onPressed: () async {
-                          _apiServices.sendAudioFile(selectedFilePath!);
+
+                          try{
+
+                            data =   await  _apiServices.sendAudioFile(selectedFilePath!);
+
+                            print(data);
+                            valueNotifier.value = 90;
+
+
+                          }catch(e){
+
+
+
+
+                          }
 
                         
                         },
