@@ -1,4 +1,3 @@
-import 'package:depp_reco/home_page.dart';
 import 'package:depp_reco/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:slider_button/slider_button.dart';

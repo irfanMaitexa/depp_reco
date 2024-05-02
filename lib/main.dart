@@ -1,6 +1,5 @@
 
 import 'package:depp_reco/audio_recoreder_screen.dart';
-import 'package:depp_reco/home_page.dart';
 import 'package:depp_reco/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:phone_state/phone_state.dart';

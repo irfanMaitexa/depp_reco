@@ -41,8 +41,6 @@ dependencies:
   circular_seek_bar: ^1.1.1
   loading_animation_widget: ^1.2.0+4
   http: ^1.1.0
-  tflite_audio: ^0.3.0
-  tflite_flutter:
   slider_button: ^2.1.0
   phone_state: ^1.0.4
   record: ^5.0.5

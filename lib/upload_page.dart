@@ -118,25 +118,7 @@ class _AudioUploadScreenState extends State<AudioUploadScreen> {
                 SizedBox(height: 10,)
               ],
             ))
-
-            // SizedBox(
-            //   width: double.maxFinite,
-            //   child: ElevatedButton.icon(onPressed: () {
-              
-            //     pickAudioFile();
-                
-            //   },
-            //   style: ElevatedButton.styleFrom(
-            //     backgroundColor: const Color.fromARGB(92, 138, 138, 138),
-            //   ),
-            //   label: Text('Upload',style: TextStyle(color: Colors.white),),
-            //   icon: Icon(Icons.upload,color: Colors.white,),
-              
-            //   ),
-            // )
-          
-          
-          
+                    
           ],
         ),
       ),
